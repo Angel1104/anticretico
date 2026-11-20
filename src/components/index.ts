@@ -13,3 +13,5 @@ export type { NavProps } from "./Nav/Nav";
 export { TestnetBanner } from "./TestnetBanner/TestnetBanner";
 export { ExplorerLink } from "./ExplorerLink/ExplorerLink";
 export type { ExplorerLinkProps } from "./ExplorerLink/ExplorerLink";
+export { InvestFlow } from "./InvestFlow/InvestFlow";
+export type { InvestFlowProps } from "./InvestFlow/InvestFlow";

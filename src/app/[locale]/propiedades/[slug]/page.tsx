@@ -6,8 +6,7 @@ import {
   TestnetBanner,
   StatePill,
   FundingBar,
-  RiskDisclosure,
-  Button,
+  InvestFlow,
 } from "@/components";
 import {
   getPropertyBySlug,
@@ -94,14 +93,11 @@ export default async function PropertyDetailPage({ params }: Props) {
             size="lg"
           />
 
-          <div className={styles.risks}>
-            <RiskDisclosure copyKey="investVariableYield" />
-            <RiskDisclosure copyKey="investTestnet" />
-          </div>
-
-          <Button variant="primary" size="lg" disabled={!canInvest}>
-            {t("invest")}
-          </Button>
+          <InvestFlow
+            propertyId={property.id}
+            propertySlug={property.slug}
+            canInvest={canInvest}
+          />
         </section>
 
         {property.description && (

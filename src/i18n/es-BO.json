@@ -64,6 +64,36 @@
     "investVariableYield": "El rendimiento es variable. Depende del alquiler, la zona y la ocupación. Nunca garantizado.",
     "investTestnet": "Estás operando en Stellar Testnet. Los USDC son de prueba, sin valor real."
   },
+  "invest": {
+    "invest": "Invertir",
+    "amount": "Monto",
+    "minHint": "Mínimo 1.000 USDC",
+    "continue": "Continuar",
+    "connecting": "Conectando wallet…",
+    "connectingBody": "Autoriza la conexión en tu extensión Freighter.",
+    "confirmTitle": "Confirmar inversión",
+    "summary": {
+      "amount": "Monto",
+      "wallet": "Wallet",
+      "network": "Red"
+    },
+    "cancel": "Cancelar",
+    "sign": "Firmar",
+    "signing": "Firmando…",
+    "signingBody": "Firma la transacción en Freighter y luego enviamos a la red.",
+    "receiptTitle": "Inversión confirmada",
+    "receiptBody": "{amount} USDC enviados al escrow. Tu posición aparecerá en el dashboard en cuanto el bloque confirme.",
+    "done": "Listo",
+    "retry": "Reintentar",
+    "errorTitle": "Inversión no completada",
+    "errorMinAmount": "El monto mínimo es 1.000 USDC.",
+    "error": {
+      "not-installed": "Freighter no está instalado. Instálalo desde freighter.app y recarga.",
+      "wrong-network": "Freighter no está en testnet. Cambia la red en la extensión y reintenta.",
+      "user-rejected": "Rechazaste la conexión. Reintenta cuando quieras.",
+      "unknown": "Error desconocido. Reintenta en unos segundos."
+    }
+  },
   "state": {
     "En fondeo": "En fondeo",
     "En trámite": "En trámite",
