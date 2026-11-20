@@ -22,6 +22,8 @@
   "nav": {
     "propiedades": "Properties",
     "dashboard": "Dashboard",
+    "owner": "Owner",
+    "admin": "Admin",
     "connect": "Connect wallet"
   },
   "testnetBanner": "TESTNET · Test USDC, no real value",
@@ -62,7 +64,8 @@
   },
   "risk": {
     "investVariableYield": "Yield is variable. It depends on rent, zone, and occupancy. Never guaranteed.",
-    "investTestnet": "You are operating on Stellar Testnet. The USDC is test currency with no real value."
+    "investTestnet": "You are operating on Stellar Testnet. The USDC is test currency with no real value.",
+    "defiStub": "DeFi integration uses a testnet stub account. Real Blend integration ships as a post-pilot epic."
   },
   "invest": {
     "invest": "Invest",
@@ -132,5 +135,22 @@
     "distributeConfirmBody": "Type DISTRIBUIR to confirm. Distribution is irreversible — USDC is sent to every holder in a single transaction.",
     "distributedBody": "Distributed {amount} USDC to {count} holders.",
     "noneToDistribute": "No properties with active rent to distribute."
+  },
+  "owner": {
+    "title": "Owner panel",
+    "subtitle": "Decide what to do with the USDC you received from the anticrético.",
+    "connectRequired": "Connect your wallet",
+    "connectRequiredBody": "To see your properties connect Freighter from the top-right.",
+    "loading": "Loading your properties…",
+    "noProperties": "No properties",
+    "noPropertiesBody": "The connected wallet does not own any properties on Anticretico.",
+    "receivedTotal": "Capital received",
+    "allocation": "Allocation (slider = withdraw %)",
+    "withdraw": "Withdraw to your wallet",
+    "defi": "Deposit into DeFi (Blend testnet stub)",
+    "executeButton": "Sign and execute",
+    "signing": "Signing with Freighter and submitting to Stellar…",
+    "doneBody": "Done: {w} USDC withdrawn · {d} USDC in DeFi.",
+    "retry": "Retry"
   }
 }

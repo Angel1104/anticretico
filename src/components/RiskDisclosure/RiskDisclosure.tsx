@@ -1,7 +1,7 @@
 import styles from "./RiskDisclosure.module.css";
 import { useTranslations } from "next-intl";
 
-export type RiskCopyKey = "investVariableYield" | "investTestnet";
+export type RiskCopyKey = "investVariableYield" | "investTestnet" | "defiStub";
 
 export type RiskDisclosureProps = {
   copyKey: RiskCopyKey;

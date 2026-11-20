@@ -22,6 +22,8 @@
   "nav": {
     "propiedades": "Propiedades",
     "dashboard": "Mi dashboard",
+    "owner": "Owner",
+    "admin": "Admin",
     "connect": "Conectar wallet"
   },
   "testnetBanner": "TESTNET · USDC de prueba, sin valor real",
@@ -62,7 +64,8 @@
   },
   "risk": {
     "investVariableYield": "El rendimiento es variable. Depende del alquiler, la zona y la ocupación. Nunca garantizado.",
-    "investTestnet": "Estás operando en Stellar Testnet. Los USDC son de prueba, sin valor real."
+    "investTestnet": "Estás operando en Stellar Testnet. Los USDC son de prueba, sin valor real.",
+    "defiStub": "La integración DeFi usa un contrato stub en testnet. La integración real con Blend es un epic post-piloto."
   },
   "invest": {
     "invest": "Invertir",
@@ -132,5 +135,22 @@
     "distributeConfirmBody": "Escribí DISTRIBUIR para confirmar. La distribución es irreversible — los USDC se envían a todos los holders en una sola transacción.",
     "distributedBody": "Distribuidos {amount} USDC a {count} holders.",
     "noneToDistribute": "No hay propiedades con rentas activas por distribuir."
+  },
+  "owner": {
+    "title": "Panel owner",
+    "subtitle": "Decidí qué hacer con los USDC que recibiste del anticrético.",
+    "connectRequired": "Conectá tu wallet",
+    "connectRequiredBody": "Para ver tus propiedades conectá Freighter desde el botón arriba a la derecha.",
+    "loading": "Cargando tus propiedades…",
+    "noProperties": "Sin propiedades",
+    "noPropertiesBody": "La wallet conectada no es dueña de ninguna propiedad en Anticretico.",
+    "receivedTotal": "Capital recibido",
+    "allocation": "Distribución (slider = % a retirar)",
+    "withdraw": "Retirar a tu wallet",
+    "defi": "Depositar en DeFi (Blend testnet stub)",
+    "executeButton": "Firmar y ejecutar",
+    "signing": "Firmando con Freighter y enviando a Stellar…",
+    "doneBody": "Ejecutado: {w} USDC retirados · {d} USDC en DeFi.",
+    "retry": "Reintentar"
   }
 }

@@ -16,3 +16,4 @@ export type { ExplorerLinkProps } from "./ExplorerLink/ExplorerLink";
 export { InvestFlow } from "./InvestFlow/InvestFlow";
 export type { InvestFlowProps } from "./InvestFlow/InvestFlow";
 export { AdminPanel } from "./AdminPanel/AdminPanel";
+export { OwnerPanel } from "./OwnerPanel/OwnerPanel";
