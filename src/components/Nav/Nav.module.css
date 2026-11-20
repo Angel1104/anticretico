@@ -57,3 +57,13 @@
 .cta:hover {
   background: var(--color-gold-hover);
 }
+
+.cta:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error {
+  font-size: var(--typography-font-size-xs);
+  color: var(--color-state-danger);
+}

@@ -1,10 +1,7 @@
 "use client";
 
 import {
-  isConnected as freighterIsConnected,
-  isAllowed,
-  setAllowed,
-  getAddress,
+  requestAccess,
   getNetworkDetails,
   signTransaction,
 } from "@stellar/freighter-api";
@@ -37,64 +34,24 @@ function withTimeout<T>(p: Promise<T>, ms: number, label: string): Promise<T> {
 }
 
 /**
- * Detect whether Freighter is actually installed.
+ * Connect to Freighter.
  *
- * @stellar/freighter-api does NOT throw when the extension is absent — every
- * read function (isConnected, isAllowed) returns `{ <value>: false, error: {...} }`
- * immediately. The *write* functions (setAllowed, getAddress, signTransaction)
- * block indefinitely waiting for a content-script reply that never comes.
+ * Uses the canonical @stellar/freighter-api requestAccess() which:
+ *  - triggers the extension's permission popup on first use for a new origin,
+ *  - returns the chosen account's address on success,
+ *  - returns an error field when the user rejects or network/host blocks it.
  *
- * So the reliable signal is: call isConnected(); if the response has an `error`
- * field, no extension is present. Treat anything else as installed.
+ * Internals: the lib posts a message to the extension content script and awaits
+ * a reply. We wrap every call in a timeout so a missing extension never hangs
+ * the UI. The connection popup is user-driven, so we allow up to 30s there.
  */
-export async function isFreighterInstalled(): Promise<boolean> {
-  // The extension injects `window.freighter` into the page. Poll briefly to
-  // give the content script time to inject on initial load. If still absent,
-  // we treat it as not installed — do NOT fall back to the API, as it has
-  // been observed to misreport isConnected=true via postMessage reflection
-  // from unrelated listeners.
-  if (typeof window === "undefined") return false;
-  const start = Date.now();
-  while (Date.now() - start < 600) {
-    if ((window as unknown as { freighter?: unknown }).freighter) return true;
-    await new Promise((r) => setTimeout(r, 50));
-  }
-  return false;
-}
-
 export async function connectWallet(): Promise<WalletConnection | WalletError> {
-  const installed = await isFreighterInstalled();
-  if (!installed) return { kind: "not-installed" };
-
+  let access: { address?: string; error?: unknown };
   try {
-    const allowed = (await withTimeout(isAllowed(), 3000, "isAllowed")) as {
-      isAllowed?: boolean;
-      error?: unknown;
-    };
-    if (allowed?.error) return { kind: "not-installed" };
-
-    if (!allowed.isAllowed) {
-      const prompt = (await withTimeout(setAllowed(), 60_000, "setAllowed")) as {
-        isAllowed?: boolean;
-        error?: unknown;
-      };
-      if (prompt?.error) return { kind: "user-rejected" };
-      if (!prompt.isAllowed) return { kind: "user-rejected" };
-    }
-
-    const net = await withTimeout(getNetworkDetails(), 10_000, "getNetwork");
-    if (net.networkPassphrase !== STELLAR_NETWORK_PASSPHRASE) {
-      return { kind: "wrong-network", current: net.network };
-    }
-
-    const addr = (await withTimeout(getAddress(), 60_000, "getAddress")) as {
+    access = (await withTimeout(requestAccess(), 30_000, "requestAccess")) as {
       address?: string;
       error?: unknown;
     };
-    if (addr?.error || !addr.address) {
-      return { kind: "user-rejected" };
-    }
-    return { publicKey: addr.address };
   } catch (e) {
     const message = e instanceof Error ? e.message : "unknown";
     if (message.startsWith("timeout:")) {
@@ -102,6 +59,39 @@ export async function connectWallet(): Promise<WalletConnection | WalletError> {
     }
     return { kind: "unknown", message };
   }
+
+  if (access.error) {
+    const err = access.error as { code?: number; message?: string };
+    const msg = (err.message ?? "").toLowerCase();
+    // Freighter uses distinct error codes/messages for "user rejected" vs
+    // "extension missing"; a missing extension typically never replies at
+    // all (caught by our timeout above). Any error here means the user
+    // actively rejected or Freighter is in an error state.
+    if (msg.includes("reject") || msg.includes("denied") || err.code === -4) {
+      return { kind: "user-rejected" };
+    }
+    if (msg.includes("not found") || msg.includes("install")) {
+      return { kind: "not-installed" };
+    }
+    return { kind: "unknown", message: err.message ?? "unknown" };
+  }
+
+  if (!access.address) {
+    return { kind: "user-rejected" };
+  }
+
+  // Verify network. If the user has Freighter on mainnet, refuse.
+  try {
+    const net = await withTimeout(getNetworkDetails(), 5_000, "getNetworkDetails");
+    if (net.networkPassphrase !== STELLAR_NETWORK_PASSPHRASE) {
+      return { kind: "wrong-network", current: net.network };
+    }
+  } catch (e) {
+    const message = e instanceof Error ? e.message : "unknown";
+    return { kind: "unknown", message };
+  }
+
+  return { publicKey: access.address };
 }
 
 export async function signXdr(xdr: string, publicKey: string): Promise<string> {
