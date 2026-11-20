@@ -63,14 +63,7 @@ export async function isFreighterInstalled(): Promise<boolean> {
 }
 
 export async function connectWallet(): Promise<WalletConnection | WalletError> {
-  // Diagnostic traces (visible in browser as window.__ws)
-  if (typeof window !== "undefined") {
-    (window as unknown as { __ws?: string }).__ws = "start";
-  }
   const installed = await isFreighterInstalled();
-  if (typeof window !== "undefined") {
-    (window as unknown as { __ws?: string }).__ws = "installed:" + installed;
-  }
   if (!installed) return { kind: "not-installed" };
 
   try {
