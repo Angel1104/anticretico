@@ -59,9 +59,17 @@ export function Nav({ variant = "app" }: NavProps) {
       </Link>
       <div className={styles.links}>
         {variant === "app" && (
-          <Link href="/propiedades" className={styles.link}>
-            {t("propiedades")}
-          </Link>
+          <>
+            <Link href="/propiedades" className={styles.link}>
+              {t("propiedades")}
+            </Link>
+            <Link href="/owner" className={styles.link}>
+              {t("owner")}
+            </Link>
+            <Link href="/admin" className={styles.link}>
+              {t("admin")}
+            </Link>
+          </>
         )}
       </div>
       <div className={styles.right}>
