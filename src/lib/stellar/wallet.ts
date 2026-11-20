@@ -20,11 +20,9 @@ export type WalletError =
   | { kind: "user-rejected" }
   | { kind: "unknown"; message: string };
 
-const DETECT_TIMEOUT_MS = 1500;
-
-function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
+function withTimeout<T>(p: Promise<T>, ms: number, label: string): Promise<T> {
   return new Promise((resolve, reject) => {
-    const timer = setTimeout(() => reject(new Error("timeout")), ms);
+    const timer = setTimeout(() => reject(new Error(`timeout:${label}`)), ms);
     p.then(
       (v) => {
         clearTimeout(timer);
@@ -38,15 +36,25 @@ function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
   });
 }
 
+/**
+ * Detect whether Freighter is actually installed.
+ *
+ * @stellar/freighter-api does NOT throw when the extension is absent — every
+ * read function (isConnected, isAllowed) returns `{ <value>: false, error: {...} }`
+ * immediately. The *write* functions (setAllowed, getAddress, signTransaction)
+ * block indefinitely waiting for a content-script reply that never comes.
+ *
+ * So the reliable signal is: call isConnected(); if the response has an `error`
+ * field, no extension is present. Treat anything else as installed.
+ */
 export async function isFreighterInstalled(): Promise<boolean> {
-  // Freighter's @stellar/freighter-api hangs when the extension isn't present
-  // (it posts a message and waits for a reply that never comes). A short race
-  // against isConnected() is the reliable way to detect absence.
   try {
-    const res = await withTimeout(freighterIsConnected(), DETECT_TIMEOUT_MS);
-    // isConnected returning without timeout proves the extension is there,
-    // regardless of whether the user has previously allowed this origin.
-    return typeof res === "object" && res !== null;
+    const res = (await withTimeout(freighterIsConnected(), 1500, "isConnected")) as {
+      isConnected?: boolean;
+      error?: unknown;
+    };
+    if (res && "error" in res && res.error) return false;
+    return true;
   } catch {
     return false;
   }
@@ -57,25 +65,39 @@ export async function connectWallet(): Promise<WalletConnection | WalletError> {
   if (!installed) return { kind: "not-installed" };
 
   try {
-    const allowed = await withTimeout(isAllowed(), 10_000);
+    const allowed = (await withTimeout(isAllowed(), 3000, "isAllowed")) as {
+      isAllowed?: boolean;
+      error?: unknown;
+    };
+    if (allowed?.error) return { kind: "not-installed" };
+
     if (!allowed.isAllowed) {
-      const prompt = await setAllowed();
+      const prompt = (await withTimeout(setAllowed(), 60_000, "setAllowed")) as {
+        isAllowed?: boolean;
+        error?: unknown;
+      };
+      if (prompt?.error) return { kind: "user-rejected" };
       if (!prompt.isAllowed) return { kind: "user-rejected" };
     }
 
-    const net = await getNetworkDetails();
+    const net = await withTimeout(getNetworkDetails(), 10_000, "getNetwork");
     if (net.networkPassphrase !== STELLAR_NETWORK_PASSPHRASE) {
       return { kind: "wrong-network", current: net.network };
     }
 
-    const addr = await getAddress();
-    if (addr.error || !addr.address) {
+    const addr = (await withTimeout(getAddress(), 60_000, "getAddress")) as {
+      address?: string;
+      error?: unknown;
+    };
+    if (addr?.error || !addr.address) {
       return { kind: "user-rejected" };
     }
     return { publicKey: addr.address };
   } catch (e) {
     const message = e instanceof Error ? e.message : "unknown";
-    if (message === "timeout") return { kind: "not-installed" };
+    if (message.startsWith("timeout:")) {
+      return { kind: "not-installed" };
+    }
     return { kind: "unknown", message };
   }
 }
