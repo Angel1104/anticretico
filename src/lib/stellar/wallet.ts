@@ -20,10 +20,33 @@ export type WalletError =
   | { kind: "user-rejected" }
   | { kind: "unknown"; message: string };
 
+const DETECT_TIMEOUT_MS = 1500;
+
+function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error("timeout")), ms);
+    p.then(
+      (v) => {
+        clearTimeout(timer);
+        resolve(v);
+      },
+      (e) => {
+        clearTimeout(timer);
+        reject(e);
+      },
+    );
+  });
+}
+
 export async function isFreighterInstalled(): Promise<boolean> {
+  // Freighter's @stellar/freighter-api hangs when the extension isn't present
+  // (it posts a message and waits for a reply that never comes). A short race
+  // against isConnected() is the reliable way to detect absence.
   try {
-    const res = await freighterIsConnected();
-    return res.isConnected === true;
+    const res = await withTimeout(freighterIsConnected(), DETECT_TIMEOUT_MS);
+    // isConnected returning without timeout proves the extension is there,
+    // regardless of whether the user has previously allowed this origin.
+    return typeof res === "object" && res !== null;
   } catch {
     return false;
   }
@@ -34,7 +57,7 @@ export async function connectWallet(): Promise<WalletConnection | WalletError> {
   if (!installed) return { kind: "not-installed" };
 
   try {
-    const allowed = await isAllowed();
+    const allowed = await withTimeout(isAllowed(), 10_000);
     if (!allowed.isAllowed) {
       const prompt = await setAllowed();
       if (!prompt.isAllowed) return { kind: "user-rejected" };
@@ -51,7 +74,9 @@ export async function connectWallet(): Promise<WalletConnection | WalletError> {
     }
     return { publicKey: addr.address };
   } catch (e) {
-    return { kind: "unknown", message: e instanceof Error ? e.message : "unknown" };
+    const message = e instanceof Error ? e.message : "unknown";
+    if (message === "timeout") return { kind: "not-installed" };
+    return { kind: "unknown", message };
   }
 }
 
