@@ -88,9 +88,9 @@
     "errorTitle": "Inversión no completada",
     "errorMinAmount": "El monto mínimo es 1.000 USDC.",
     "error": {
-      "not-installed": "Freighter no está instalado. Instálalo desde freighter.app y recarga.",
-      "wrong-network": "Freighter no está en testnet. Cambia la red en la extensión y reintenta.",
-      "user-rejected": "Rechazaste la conexión. Reintenta cuando quieras.",
+      "notInstalled": "Freighter no está instalado. Instálalo desde freighter.app y recarga.",
+      "wrongNetwork": "Freighter no está en testnet. Cambia la red en la extensión y reintenta.",
+      "userRejected": "Rechazaste la conexión. Reintenta cuando quieras.",
       "unknown": "Error desconocido. Reintenta en unos segundos."
     }
   },

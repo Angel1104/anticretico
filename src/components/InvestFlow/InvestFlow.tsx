@@ -34,12 +34,27 @@ export function InvestFlow({ propertyId, propertySlug, canInvest }: InvestFlowPr
       return;
     }
     setStep({ kind: "connecting" });
-    const conn = await connectWallet();
-    if ("kind" in conn) {
-      setStep({ kind: "error", message: t(`error.${conn.kind}`) });
-      return;
+    try {
+      const conn = await connectWallet();
+      if ("kind" in conn) {
+        const errorKey =
+          conn.kind === "not-installed"
+            ? "notInstalled"
+            : conn.kind === "wrong-network"
+              ? "wrongNetwork"
+              : conn.kind === "user-rejected"
+                ? "userRejected"
+                : "unknown";
+        setStep({ kind: "error", message: t(`error.${errorKey}`) });
+        return;
+      }
+      setStep({ kind: "confirm", amount, publicKey: conn.publicKey });
+    } catch (e) {
+      setStep({
+        kind: "error",
+        message: e instanceof Error ? e.message : "Unexpected error",
+      });
     }
-    setStep({ kind: "confirm", amount, publicKey: conn.publicKey });
   }
 
   async function handleSign() {
