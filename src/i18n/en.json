@@ -122,6 +122,15 @@
     "cancel": "Cancel",
     "signing": "Signing and submitting to Stellar…",
     "retry": "Retry",
-    "releasedBody": "Escrow released on-chain."
+    "releasedBody": "Escrow released on-chain.",
+    "distributionsTab": "Distributions",
+    "monthlyRent": "Monthly rent",
+    "platformFee": "Platform fee (15%)",
+    "netToDistribute": "Net to distribute",
+    "holders": "Holders",
+    "distributeButton": "Distribute via Pollar",
+    "distributeConfirmBody": "Type DISTRIBUIR to confirm. Distribution is irreversible — USDC is sent to every holder in a single transaction.",
+    "distributedBody": "Distributed {amount} USDC to {count} holders.",
+    "noneToDistribute": "No properties with active rent to distribute."
   }
 }

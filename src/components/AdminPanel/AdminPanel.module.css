@@ -1,7 +1,36 @@
 .wrap {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-10);
+  gap: var(--spacing-6);
+}
+
+.tabs {
+  display: flex;
+  gap: var(--spacing-2);
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: var(--spacing-4);
+}
+
+.tab {
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary);
+  padding: var(--spacing-3) var(--spacing-5);
+  font-size: var(--typography-font-size-base);
+  font-weight: var(--typography-font-weight-medium);
+  cursor: pointer;
+  position: relative;
+  bottom: -1px;
+  font-family: inherit;
+}
+
+.tab:hover {
+  color: var(--color-text-primary);
+}
+
+.tabActive {
+  color: var(--color-gold);
+  border-bottom: 2px solid var(--color-gold);
 }
 
 .sectionTitle {
