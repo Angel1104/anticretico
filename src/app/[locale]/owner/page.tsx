@@ -3,6 +3,9 @@ import { Nav, TestnetBanner } from "@/components";
 import { OwnerPanel } from "@/components/OwnerPanel/OwnerPanel";
 import styles from "./owner.module.css";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 type Props = {
   params: Promise<{ locale: string }>;
 };
