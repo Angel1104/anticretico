@@ -48,27 +48,18 @@ function withTimeout<T>(p: Promise<T>, ms: number, label: string): Promise<T> {
  * field, no extension is present. Treat anything else as installed.
  */
 export async function isFreighterInstalled(): Promise<boolean> {
-  // Sync probe first: the extension injects `window.freighter` into the page.
-  // Confirmed in production: without the extension, `window.freighter` is undefined
-  // and the API's isConnected() enters a hanging postMessage path. A short poll
-  // (~500ms) gives the extension time to inject in case this runs very early.
+  // The extension injects `window.freighter` into the page. Poll briefly to
+  // give the content script time to inject on initial load. If still absent,
+  // we treat it as not installed — do NOT fall back to the API, as it has
+  // been observed to misreport isConnected=true via postMessage reflection
+  // from unrelated listeners.
   if (typeof window === "undefined") return false;
   const start = Date.now();
-  while (Date.now() - start < 500) {
+  while (Date.now() - start < 600) {
     if ((window as unknown as { freighter?: unknown }).freighter) return true;
     await new Promise((r) => setTimeout(r, 50));
   }
-  // Still no global — confirm via API with a short timeout as a fallback.
-  try {
-    const res = (await withTimeout(freighterIsConnected(), 1000, "isConnected")) as {
-      isConnected?: boolean;
-      error?: unknown;
-    };
-    if (res && "error" in res && res.error) return false;
-    return !!res?.isConnected;
-  } catch {
-    return false;
-  }
+  return false;
 }
 
 export async function connectWallet(): Promise<WalletConnection | WalletError> {
