@@ -1,0 +1,29 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-3);
+  background: var(--color-bg-elevated-2);
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-sm);
+  font-size: var(--typography-font-size-sm);
+  line-height: 1;
+  text-decoration: none;
+  transition: background var(--motion-duration-fast, 120ms) var(--motion-easing-standard, ease),
+    color var(--motion-duration-fast, 120ms) var(--motion-easing-standard, ease);
+}
+
+.chip:hover {
+  background: var(--color-border-strong);
+  color: var(--color-text-primary);
+}
+
+.chip:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus-ring);
+}
+
+.value {
+  font-family: var(--typography-font-family-mono);
+  font-size: var(--typography-font-size-sm);
+}
