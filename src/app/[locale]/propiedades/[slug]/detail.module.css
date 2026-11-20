@@ -1,0 +1,138 @@
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: var(--spacing-10) var(--spacing-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.back {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: var(--typography-font-size-sm);
+}
+
+.back:hover {
+  color: var(--color-text-primary);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--typography-font-size-2xl);
+  font-weight: var(--typography-font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.address {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--typography-font-size-lg);
+}
+
+.gallery {
+  aspect-ratio: 3 / 2;
+  background: var(--color-bg-elevated-2);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    var(--color-bg-elevated-2) 0%,
+    color-mix(in srgb, var(--color-gold) 25%, var(--color-bg-elevated)) 100%
+  );
+}
+
+.anticreticoCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  padding: var(--spacing-8);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: var(--typography-font-size-xl);
+  font-weight: var(--typography-font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-5);
+  margin: 0;
+}
+
+.metrics > div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.metrics dt {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--typography-font-size-sm);
+}
+
+.metrics dd {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: var(--typography-font-size-base);
+  font-weight: var(--typography-font-weight-medium);
+}
+
+.money {
+  font-size: var(--typography-font-size-money) !important;
+  font-weight: var(--typography-font-weight-bold) !important;
+  color: var(--color-text-primary) !important;
+  line-height: var(--typography-line-height-tight);
+}
+
+.risks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: var(--typography-font-size-xl);
+  font-weight: var(--typography-font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.description {
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: var(--typography-line-height-normal);
+}

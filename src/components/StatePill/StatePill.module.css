@@ -1,0 +1,44 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  height: 24px;
+  padding: 0 var(--spacing-3);
+  border-radius: var(--radius-pill);
+  font-size: var(--typography-font-size-xs);
+  font-weight: var(--typography-font-weight-medium);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: currentColor;
+}
+
+.fondeo {
+  color: var(--color-state-info);
+  background: color-mix(in srgb, var(--color-state-info) 15%, transparent);
+}
+
+.tramite {
+  color: var(--color-gold);
+  background: color-mix(in srgb, var(--color-gold) 15%, transparent);
+}
+
+.buscando {
+  color: var(--color-state-info);
+  background: color-mix(in srgb, var(--color-state-info) 15%, transparent);
+}
+
+.alquilado {
+  color: var(--color-state-success);
+  background: color-mix(in srgb, var(--color-state-success) 15%, transparent);
+}
+
+.finalizado {
+  color: var(--color-text-muted);
+  background: color-mix(in srgb, var(--color-text-muted) 15%, transparent);
+}

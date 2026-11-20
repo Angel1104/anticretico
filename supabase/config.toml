@@ -1,0 +1,8 @@
+project_id = "qrghrfyomuxswgtswkrd"
+
+[api]
+enabled = true
+schemas = ["public"]
+
+[db]
+major_version = 17

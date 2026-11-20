@@ -1,0 +1,74 @@
+{
+  "landing": {
+    "hero": {
+      "title": "Invierte en anticréticos bolivianos desde 1.000 USDC.",
+      "subtitle": "Rendimiento variable. Protegido por Derechos Reales. On-chain en Stellar.",
+      "ctaPrimary": "Ver propiedades",
+      "ctaSecondary": "Soy propietario"
+    },
+    "how": {
+      "title": "Cómo funciona",
+      "steps": [
+        "Un propietario pone su casa en anticrético.",
+        "Inversionistas aportan USDC a un escrow Trustless Work.",
+        "Al inscribirse en Derechos Reales, el escrow se libera al dueño.",
+        "La renta mensual se distribuye a los holders vía Pollar."
+      ]
+    },
+    "featured": {
+      "title": "Propiedades destacadas"
+    }
+  },
+  "nav": {
+    "propiedades": "Propiedades",
+    "dashboard": "Mi dashboard",
+    "connect": "Conectar wallet"
+  },
+  "testnetBanner": "TESTNET · USDC de prueba, sin valor real",
+  "catalog": {
+    "title": "Propiedades",
+    "subtitle": "{count} propiedades disponibles",
+    "empty": "Aún no hay propiedades listadas."
+  },
+  "propertyCard": {
+    "anticretico": "Anticrético",
+    "rent": "Alquiler",
+    "rentVariable": "{amount} USDC/mes · variable",
+    "viewDetails": "Ver detalles",
+    "finalized": "Finalizada",
+    "viewHistory": "Ver historial"
+  },
+  "fundingBar": {
+    "funded": "{amount} USDC fondeados",
+    "ofTarget": "de {target} USDC",
+    "investors": "{count} inversionistas",
+    "daysLeft": "{days} días restantes",
+    "fullyFunded": "Fondeada"
+  },
+  "propertyDetail": {
+    "back": "Volver",
+    "anticretico": "Anticrético",
+    "target": "Objetivo",
+    "funded": "Fondeado",
+    "rentMonthly": "Alquiler mensual",
+    "term": "Plazo",
+    "termMonths": "{months} meses",
+    "invest": "Invertir",
+    "notFound": "Propiedad no encontrada",
+    "details": "Detalles",
+    "description": "Descripción",
+    "onchainHistory": "Historial on-chain",
+    "noHistory": "Aún no hay transacciones en esta propiedad."
+  },
+  "risk": {
+    "investVariableYield": "El rendimiento es variable. Depende del alquiler, la zona y la ocupación. Nunca garantizado.",
+    "investTestnet": "Estás operando en Stellar Testnet. Los USDC son de prueba, sin valor real."
+  },
+  "state": {
+    "En fondeo": "En fondeo",
+    "En trámite": "En trámite",
+    "Buscando inquilino": "Buscando inquilino",
+    "Alquilado": "Alquilado",
+    "Finalizado": "Finalizado"
+  }
+}

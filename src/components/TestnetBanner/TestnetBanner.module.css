@@ -1,0 +1,9 @@
+.bar {
+  padding: 4px var(--spacing-4);
+  text-align: center;
+  background: color-mix(in srgb, var(--color-gold) 20%, var(--color-bg));
+  color: var(--color-gold);
+  font-size: var(--typography-font-size-xs);
+  font-weight: var(--typography-font-weight-medium);
+  letter-spacing: 0.04em;
+}
