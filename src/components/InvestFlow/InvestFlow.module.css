@@ -1,0 +1,127 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+  padding: var(--spacing-6);
+  background: var(--color-bg-elevated-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--typography-font-size-lg);
+  font-weight: var(--typography-font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.body {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  font-size: var(--typography-font-size-sm);
+  font-weight: var(--typography-font-weight-medium);
+  color: var(--color-text-secondary);
+}
+
+.inputWrap {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0 var(--spacing-4);
+}
+
+.inputWrap:focus-within {
+  border-color: var(--color-border-strong);
+  box-shadow: 0 0 0 3px rgba(212, 167, 76, 0.4);
+}
+
+.input {
+  flex: 1;
+  background: transparent;
+  border: 0;
+  color: var(--color-text-primary);
+  font-size: var(--typography-font-size-xl);
+  font-weight: var(--typography-font-weight-semibold);
+  font-family: inherit;
+  outline: none;
+}
+
+.suffix {
+  color: var(--color-text-secondary);
+  font-weight: var(--typography-font-weight-medium);
+  font-size: var(--typography-font-size-sm);
+}
+
+.hint {
+  color: var(--color-text-muted);
+  font-size: var(--typography-font-size-xs);
+  font-weight: var(--typography-font-weight-regular);
+}
+
+.summary {
+  margin: 0;
+  display: grid;
+  gap: var(--spacing-3);
+}
+
+.summary > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.summary dt {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--typography-font-size-sm);
+}
+
+.summary dd {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-weight: var(--typography-font-weight-medium);
+}
+
+.mono {
+  font-family: var(--typography-font-family-mono);
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacing-3);
+  justify-content: flex-end;
+}
+
+.success {
+  border-color: var(--color-state-success);
+}
+
+.successIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--color-state-success) 20%, transparent);
+  color: var(--color-state-success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--typography-font-size-xl);
+  font-weight: var(--typography-font-weight-bold);
+}
+
+.explorer {
+  display: flex;
+}
+
+.error {
+  border-color: var(--color-state-danger);
+}

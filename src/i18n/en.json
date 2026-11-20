@@ -64,6 +64,36 @@
     "investVariableYield": "Yield is variable. It depends on rent, zone, and occupancy. Never guaranteed.",
     "investTestnet": "You are operating on Stellar Testnet. The USDC is test currency with no real value."
   },
+  "invest": {
+    "invest": "Invest",
+    "amount": "Amount",
+    "minHint": "Minimum 1,000 USDC",
+    "continue": "Continue",
+    "connecting": "Connecting wallet…",
+    "connectingBody": "Approve the connection in your Freighter extension.",
+    "confirmTitle": "Confirm investment",
+    "summary": {
+      "amount": "Amount",
+      "wallet": "Wallet",
+      "network": "Network"
+    },
+    "cancel": "Cancel",
+    "sign": "Sign",
+    "signing": "Signing…",
+    "signingBody": "Sign the transaction in Freighter; we'll submit it to the network.",
+    "receiptTitle": "Investment confirmed",
+    "receiptBody": "{amount} USDC sent to the escrow. Your position will appear in the dashboard once the block confirms.",
+    "done": "Done",
+    "retry": "Retry",
+    "errorTitle": "Investment not completed",
+    "errorMinAmount": "Minimum amount is 1,000 USDC.",
+    "error": {
+      "not-installed": "Freighter is not installed. Install it from freighter.app and reload.",
+      "wrong-network": "Freighter is not on testnet. Switch the network in the extension and retry.",
+      "user-rejected": "You rejected the connection. Retry whenever you are ready.",
+      "unknown": "Unknown error. Try again in a few seconds."
+    }
+  },
   "state": {
     "En fondeo": "Funding",
     "En trámite": "In registration",
