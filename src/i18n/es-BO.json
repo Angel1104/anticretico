@@ -101,5 +101,27 @@
     "Buscando inquilino": "Buscando inquilino",
     "Alquilado": "Alquilado",
     "Finalizado": "Finalizado"
+  },
+  "admin": {
+    "title": "Panel admin",
+    "subtitle": "Validá inscripciones en Derechos Reales y liberá escrows al dueño.",
+    "connectRequired": "Conectá tu wallet",
+    "connectRequiredBody": "Para acceder al panel admin, conectá tu Freighter desde el botón arriba a la derecha.",
+    "notAuthorized": "Wallet no autorizada",
+    "notAuthorizedBody": "Esta wallet no tiene permisos de admin:",
+    "validations": "Validaciones pendientes",
+    "already": "Ya liberadas",
+    "noneReady": "No hay propiedades esperando liberación.",
+    "fundedTotal": "USDC en escrow",
+    "investors": "Inversionistas",
+    "ownerWallet": "Wallet del dueño",
+    "missingOwner": "sin asignar",
+    "releaseButton": "Validar DR y liberar",
+    "confirmBody": "Escribí LIBERAR para confirmar. El escrow se enviará al wallet del dueño en una transacción irreversible.",
+    "confirm": "Liberar",
+    "cancel": "Cancelar",
+    "signing": "Firmando y enviando a Stellar…",
+    "retry": "Reintentar",
+    "releasedBody": "Escrow liberado on-chain."
   }
 }
