@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 import styles from "./InvestFlow.module.css";
 import { useTranslations } from "next-intl";
 import { RiskDisclosure, ExplorerLink, Button } from "@/components";
@@ -24,6 +26,7 @@ export type InvestFlowProps = {
 
 export function InvestFlow({ propertyId, propertySlug, canInvest }: InvestFlowProps) {
   const t = useTranslations("invest");
+  const router = useRouter();
   const [step, setStep] = useState<Step>({ kind: "amount" });
   const [amountInput, setAmountInput] = useState("1000");
 
@@ -191,9 +194,21 @@ export function InvestFlow({ propertyId, propertySlug, canInvest }: InvestFlowPr
         <div className={styles.explorer}>
           <ExplorerLink kind="tx" value={step.hash} />
         </div>
-        <Button variant="secondary" size="md" onClick={reset}>
-          {t("done")}
-        </Button>
+        <div className={styles.actions}>
+          <Link href="/propiedades" className={styles.linkBtn}>
+            {t("backToCatalog")}
+          </Link>
+          <Button
+            variant="primary"
+            size="md"
+            onClick={() => {
+              router.refresh();
+              reset();
+            }}
+          >
+            {t("done")}
+          </Button>
+        </div>
       </div>
     );
   }
