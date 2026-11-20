@@ -5,6 +5,9 @@ import { listRolloverCandidates } from "@/lib/admin/rollover";
 import { AdminPanel } from "@/components/AdminPanel/AdminPanel";
 import styles from "./admin.module.css";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 type Props = {
   params: Promise<{ locale: string }>;
 };

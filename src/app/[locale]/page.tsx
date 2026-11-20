@@ -5,6 +5,9 @@ import { PropertyCard } from "@/components";
 import { listProperties, getFundedUsdcForProperty, countInvestorsForProperty } from "@/lib/db/properties";
 import styles from "./landing.module.css";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 type Props = {
   params: Promise<{ locale: string }>;
 };
