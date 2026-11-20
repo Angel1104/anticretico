@@ -101,5 +101,27 @@
     "Buscando inquilino": "Seeking tenant",
     "Alquilado": "Rented",
     "Finalizado": "Completed"
+  },
+  "admin": {
+    "title": "Admin panel",
+    "subtitle": "Validate Derechos Reales inscriptions and release escrows to owners.",
+    "connectRequired": "Connect your wallet",
+    "connectRequiredBody": "To access the admin panel, connect your Freighter from the top-right.",
+    "notAuthorized": "Wallet not authorised",
+    "notAuthorizedBody": "This wallet does not have admin access:",
+    "validations": "Pending validations",
+    "already": "Already released",
+    "noneReady": "No properties awaiting release.",
+    "fundedTotal": "USDC in escrow",
+    "investors": "Investors",
+    "ownerWallet": "Owner wallet",
+    "missingOwner": "not set",
+    "releaseButton": "Validate DR + release",
+    "confirmBody": "Type LIBERAR to confirm. The escrow will be sent to the owner wallet in an irreversible transaction.",
+    "confirm": "Release",
+    "cancel": "Cancel",
+    "signing": "Signing and submitting to Stellar…",
+    "retry": "Retry",
+    "releasedBody": "Escrow released on-chain."
   }
 }
