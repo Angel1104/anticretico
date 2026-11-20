@@ -7,6 +7,8 @@ import { useTranslations } from "next-intl";
 import { Button, StatePill, RiskDisclosure, ExplorerLink } from "@/components";
 import { releaseEscrow } from "@/lib/admin/actions";
 import { distributeMonthlyRent } from "@/lib/admin/distribute";
+import { RolloverPanel } from "@/components/RolloverPanel/RolloverPanel";
+import type { Property } from "@/lib/db/types";
 import type { AdminPropertyRow } from "@/lib/admin/queries";
 
 const STORAGE_KEY = "anticretico:wallet";
@@ -35,13 +37,23 @@ function formatUsdc(n: number): string {
   return new Intl.NumberFormat("es-BO", { maximumFractionDigits: 0 }).format(n);
 }
 
-export function AdminPanel({ properties }: { properties: AdminPropertyRow[] }) {
+export function AdminPanel({
+  properties,
+  rolloverSources,
+  rolloverTargets,
+}: {
+  properties: AdminPropertyRow[];
+  rolloverSources: Property[];
+  rolloverTargets: Property[];
+}) {
   const t = useTranslations("admin");
   const router = useRouter();
   const [wallet, setWallet] = useState<string | null>(null);
   const [state, setState] = useState<ReleaseState>({ kind: "idle" });
   const [distrib, setDistrib] = useState<DistribState>({ kind: "idle" });
-  const [tab, setTab] = useState<"validations" | "distributions">("validations");
+  const [tab, setTab] = useState<"validations" | "distributions" | "rollover">(
+    "validations",
+  );
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -146,7 +158,25 @@ export function AdminPanel({ properties }: { properties: AdminPropertyRow[] }) {
         >
           {t("distributionsTab")}
         </button>
+        <button
+          className={`${styles.tab} ${tab === "rollover" ? styles.tabActive : ""}`}
+          onClick={() => setTab("rollover")}
+          type="button"
+        >
+          {t("rolloverTab")}
+        </button>
       </div>
+
+      {tab === "rollover" && (
+        <section>
+          <h2 className={styles.sectionTitle}>{t("rolloverTab")}</h2>
+          <RolloverPanel
+            sources={rolloverSources}
+            targets={rolloverTargets}
+            adminWallet={wallet!}
+          />
+        </section>
+      )}
 
       {tab === "validations" && (
       <section>

@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Nav, TestnetBanner } from "@/components";
 import { listPropertiesWithFunding } from "@/lib/admin/queries";
+import { listRolloverCandidates } from "@/lib/admin/rollover";
 import { AdminPanel } from "@/components/AdminPanel/AdminPanel";
 import styles from "./admin.module.css";
 
@@ -14,6 +15,7 @@ export default async function AdminPage({ params }: Props) {
 
   const t = await getTranslations("admin");
   const rows = await listPropertiesWithFunding();
+  const rollover = await listRolloverCandidates();
 
   return (
     <>
@@ -22,7 +24,11 @@ export default async function AdminPage({ params }: Props) {
       <main className={styles.main}>
         <h1 className={styles.title}>{t("title")}</h1>
         <p className={styles.subtitle}>{t("subtitle")}</p>
-        <AdminPanel properties={rows} />
+        <AdminPanel
+          properties={rows}
+          rolloverSources={rollover.sources}
+          rolloverTargets={rollover.targets}
+        />
       </main>
     </>
   );

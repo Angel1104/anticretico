@@ -134,7 +134,22 @@
     "distributeButton": "Distribuir vía Pollar",
     "distributeConfirmBody": "Escribí DISTRIBUIR para confirmar. La distribución es irreversible — los USDC se envían a todos los holders en una sola transacción.",
     "distributedBody": "Distribuidos {amount} USDC a {count} holders.",
-    "noneToDistribute": "No hay propiedades con rentas activas por distribuir."
+    "noneToDistribute": "No hay propiedades con rentas activas por distribuir.",
+    "rolloverTab": "Rollover"
+  },
+  "rollover": {
+    "sources": "Propiedad origen (Finalizadas)",
+    "targets": "Propiedad destino (En fondeo)",
+    "noSources": "No hay propiedades finalizadas con holders para migrar.",
+    "noTargets": "No hay propiedades En fondeo con capacidad.",
+    "capacity": "Capacidad",
+    "confirmBody": "Escribí ROLLOVER para migrar holders de origen a destino. La operación es irreversible.",
+    "execute": "Ejecutar migración",
+    "cancel": "Cancelar",
+    "signing": "Firmando y migrando en Stellar…",
+    "doneBody": "Migrados {count} holders · {amount} USDC.",
+    "newRollover": "Nueva migración",
+    "retry": "Reintentar"
   },
   "owner": {
     "title": "Panel owner",

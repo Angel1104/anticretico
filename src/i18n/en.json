@@ -134,7 +134,22 @@
     "distributeButton": "Distribute via Pollar",
     "distributeConfirmBody": "Type DISTRIBUIR to confirm. Distribution is irreversible — USDC is sent to every holder in a single transaction.",
     "distributedBody": "Distributed {amount} USDC to {count} holders.",
-    "noneToDistribute": "No properties with active rent to distribute."
+    "noneToDistribute": "No properties with active rent to distribute.",
+    "rolloverTab": "Rollover"
+  },
+  "rollover": {
+    "sources": "Source property (Finalized)",
+    "targets": "Target property (Funding)",
+    "noSources": "No finalized properties with holders to migrate.",
+    "noTargets": "No funding properties with capacity.",
+    "capacity": "Capacity",
+    "confirmBody": "Type ROLLOVER to migrate holders from source to target. This cannot be undone.",
+    "execute": "Execute migration",
+    "cancel": "Cancel",
+    "signing": "Signing and migrating on Stellar…",
+    "doneBody": "Migrated {count} holders · {amount} USDC.",
+    "newRollover": "New migration",
+    "retry": "Retry"
   },
   "owner": {
     "title": "Owner panel",
