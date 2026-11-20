@@ -1,0 +1,74 @@
+{
+  "landing": {
+    "hero": {
+      "title": "Invest in Bolivian anticrético from 1,000 USDC.",
+      "subtitle": "Variable yield. Protected by the public registry (Derechos Reales). On-chain on Stellar.",
+      "ctaPrimary": "Browse properties",
+      "ctaSecondary": "I'm a property owner"
+    },
+    "how": {
+      "title": "How it works",
+      "steps": [
+        "An owner posts a property as anticrético.",
+        "Investors deposit USDC into a Trustless Work escrow.",
+        "Once the lien is registered, the escrow is released to the owner.",
+        "Monthly rent is distributed to token holders via Pollar."
+      ]
+    },
+    "featured": {
+      "title": "Featured properties"
+    }
+  },
+  "nav": {
+    "propiedades": "Properties",
+    "dashboard": "Dashboard",
+    "connect": "Connect wallet"
+  },
+  "testnetBanner": "TESTNET · Test USDC, no real value",
+  "catalog": {
+    "title": "Properties",
+    "subtitle": "{count} properties available",
+    "empty": "No properties listed yet."
+  },
+  "propertyCard": {
+    "anticretico": "Anticrético",
+    "rent": "Rent",
+    "rentVariable": "{amount} USDC/month · variable",
+    "viewDetails": "View details",
+    "finalized": "Completed",
+    "viewHistory": "View history"
+  },
+  "fundingBar": {
+    "funded": "{amount} USDC funded",
+    "ofTarget": "of {target} USDC",
+    "investors": "{count} investors",
+    "daysLeft": "{days} days left",
+    "fullyFunded": "Fully funded"
+  },
+  "propertyDetail": {
+    "back": "Back",
+    "anticretico": "Anticrético",
+    "target": "Target",
+    "funded": "Funded",
+    "rentMonthly": "Monthly rent",
+    "term": "Term",
+    "termMonths": "{months} months",
+    "invest": "Invest",
+    "notFound": "Property not found",
+    "details": "Details",
+    "description": "Description",
+    "onchainHistory": "On-chain history",
+    "noHistory": "No transactions yet for this property."
+  },
+  "risk": {
+    "investVariableYield": "Yield is variable. It depends on rent, zone, and occupancy. Never guaranteed.",
+    "investTestnet": "You are operating on Stellar Testnet. The USDC is test currency with no real value."
+  },
+  "state": {
+    "En fondeo": "Funding",
+    "En trámite": "In registration",
+    "Buscando inquilino": "Seeking tenant",
+    "Alquilado": "Rented",
+    "Finalizado": "Completed"
+  }
+}

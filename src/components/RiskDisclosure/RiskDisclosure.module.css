@@ -1,0 +1,22 @@
+.box {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  background: var(--color-bg-elevated-2);
+  border: 1px solid color-mix(in srgb, var(--color-state-danger) 40%, transparent);
+  border-radius: var(--radius-md);
+}
+
+.icon {
+  flex-shrink: 0;
+  color: var(--color-state-danger);
+  margin-top: 2px;
+}
+
+.text {
+  margin: 0;
+  font-size: var(--typography-font-size-sm);
+  color: var(--color-text-primary);
+  line-height: var(--typography-line-height-normal);
+}
