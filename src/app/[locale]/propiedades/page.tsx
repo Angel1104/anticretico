@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Nav, PropertyCard, TestnetBanner } from "@/components";
+import { Nav, PropertyCard, RealtimeRefresh, TestnetBanner } from "@/components";
 import { listProperties, getFundedUsdcForProperty, countInvestorsForProperty } from "@/lib/db/properties";
 import styles from "./catalog.module.css";
 
@@ -26,6 +26,7 @@ export default async function CatalogPage({ params }: Props) {
 
   return (
     <>
+      <RealtimeRefresh />
       <TestnetBanner />
       <Nav />
       <main className={styles.main}>

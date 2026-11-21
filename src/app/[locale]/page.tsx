@@ -1,7 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Link from "next/link";
-import { Nav } from "@/components";
-import { PropertyCard } from "@/components";
+import { Nav, PropertyCard, RealtimeRefresh } from "@/components";
 import { listProperties, getFundedUsdcForProperty, countInvestorsForProperty } from "@/lib/db/properties";
 import styles from "./landing.module.css";
 
@@ -29,6 +28,7 @@ export default async function LandingPage({ params }: Props) {
 
   return (
     <>
+      <RealtimeRefresh />
       <Nav variant="public" />
       <main className={styles.main}>
         <section className={styles.hero}>
