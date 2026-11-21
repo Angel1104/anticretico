@@ -63,6 +63,9 @@ export function Nav({ variant = "app" }: NavProps) {
             <Link href="/propiedades" className={styles.link}>
               {t("propiedades")}
             </Link>
+            <Link href="/dashboard" className={styles.link}>
+              {t("dashboard")}
+            </Link>
             <Link href="/owner" className={styles.link}>
               {t("owner")}
             </Link>
