@@ -41,6 +41,42 @@
   gap: var(--spacing-3);
 }
 
+.localeSwitcher {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.localeButton {
+  padding: var(--spacing-1);
+  background: transparent;
+  color: var(--color-text-secondary);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: var(--typography-font-size-xs);
+  font-weight: var(--typography-font-weight-regular);
+  cursor: pointer;
+}
+
+.localeButton:hover {
+  color: var(--color-text-primary);
+}
+
+.localeButtonActive,
+.localeButtonActive:disabled {
+  color: var(--color-gold);
+  font-weight: var(--typography-font-weight-bold);
+  cursor: default;
+  opacity: 1;
+}
+
+.localeDivider {
+  width: var(--spacing-0);
+  height: var(--spacing-4);
+  border-inline-start: thin solid var(--color-border-strong);
+}
+
 .cta {
   height: 32px;
   padding: 0 var(--spacing-3);

@@ -2,6 +2,7 @@
 
 import styles from "./Nav.module.css";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { connectWallet } from "@/lib/stellar/wallet";
@@ -11,6 +12,47 @@ export type NavProps = {
 };
 
 const STORAGE_KEY = "anticretico:wallet";
+
+function LocaleSwitcher() {
+  const pathname = usePathname();
+  const router = useRouter();
+  const isEnglish = pathname === "/en" || pathname.startsWith("/en/");
+
+  function switchLocale(locale: "es-BO" | "en") {
+    if ((locale === "en") === isEnglish) return;
+
+    if (locale === "en") {
+      router.replace(pathname === "/" ? "/en" : `/en${pathname}`);
+      return;
+    }
+
+    router.replace(pathname.replace(/^\/en(?=\/|$)/, "") || "/");
+  }
+
+  return (
+    <div className={styles.localeSwitcher}>
+      <button
+        className={`${styles.localeButton} ${!isEnglish ? styles.localeButtonActive : ""}`}
+        type="button"
+        onClick={() => switchLocale("es-BO")}
+        disabled={!isEnglish}
+        aria-pressed={!isEnglish}
+      >
+        ES
+      </button>
+      <span className={styles.localeDivider} aria-hidden="true" />
+      <button
+        className={`${styles.localeButton} ${isEnglish ? styles.localeButtonActive : ""}`}
+        type="button"
+        onClick={() => switchLocale("en")}
+        disabled={isEnglish}
+        aria-pressed={isEnglish}
+      >
+        EN
+      </button>
+    </div>
+  );
+}
 
 export function Nav({ variant = "app" }: NavProps) {
   const t = useTranslations("nav");
@@ -76,6 +118,7 @@ export function Nav({ variant = "app" }: NavProps) {
         )}
       </div>
       <div className={styles.right}>
+        <LocaleSwitcher />
         {publicKey ? (
           <button
             className={styles.cta}
