@@ -10,27 +10,36 @@ export type PropertyCardProps = {
   funded: number;
   investors: number;
   href?: string;
+  compact?: boolean;
 };
 
 function formatUsdc(amount: number): string {
   return new Intl.NumberFormat("es-BO", { maximumFractionDigits: 0 }).format(amount);
 }
 
-export function PropertyCard({ property, funded, investors, href }: PropertyCardProps) {
+export function PropertyCard({
+  property,
+  funded,
+  investors,
+  href,
+  compact = false,
+}: PropertyCardProps) {
   const t = useTranslations("propertyCard");
   const link = href ?? `/propiedades/${property.slug}`;
   const isFinalized = property.state === "Finalizado";
 
   return (
     <Link href={link} className={styles.card}>
-      <div className={styles.image}>
-        {property.images_urls[0] ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={property.images_urls[0]} alt={property.address} />
-        ) : (
-          <div className={styles.imagePlaceholder} />
-        )}
-      </div>
+      {!compact && (
+        <div className={styles.image}>
+          {property.images_urls[0] ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={property.images_urls[0]} alt={property.address} />
+          ) : (
+            <div className={styles.imagePlaceholder} />
+          )}
+        </div>
+      )}
       <div className={styles.body}>
         <StatePill state={property.state} />
         <div className={styles.titleRow}>

@@ -32,6 +32,23 @@
     "subtitle": "{count} properties available",
     "empty": "No properties listed yet."
   },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Your investments across all properties.",
+    "connectWallet": "Connect wallet",
+    "connectWalletBody": "Connect Freighter to see your investments.",
+    "totalInvested": "Total invested",
+    "positionsCount": "Positions",
+    "distributionsReceived": "Distributions received",
+    "variable": "variable",
+    "noPositions": "You don't have any investments yet.",
+    "myPositions": "My positions",
+    "distributionHistory": "Distribution history",
+    "date": "Date",
+    "property": "Property",
+    "amount": "Amount",
+    "transaction": "Tx"
+  },
   "propertyCard": {
     "anticretico": "Anticrético",
     "rent": "Rent",
