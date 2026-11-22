@@ -1,14 +1,17 @@
 "use client";
 
 import {
-  Asset,
   Horizon,
   Operation,
   TransactionBuilder,
   BASE_FEE,
   Memo,
 } from "@stellar/stellar-sdk";
-import { STELLAR_HORIZON_URL, STELLAR_NETWORK_PASSPHRASE } from "./network";
+import {
+  STELLAR_HORIZON_URL,
+  STELLAR_NETWORK_PASSPHRASE,
+  USDC_ASSET,
+} from "./network";
 import { signXdr } from "./wallet";
 
 const BLEND_STUB =
@@ -23,6 +26,10 @@ const horizon = new Horizon.Server(STELLAR_HORIZON_URL);
  * - withdraw: owner → arbitrary destination (defaults to self; user may supply).
  * - defi_deposit: owner → BLEND_STUB account on testnet (placeholder for Blend SDK).
  * - mixed: a single composite tx with two payment operations.
+ *
+ * All transfers move the testnet USDC asset. The owner's wallet is assumed to
+ * already hold USDC (it received the escrow release), so a trustline is
+ * guaranteed — we don't need to add one here.
  */
 export async function ownerTx(params: {
   ownerPublicKey: string;
@@ -39,9 +46,7 @@ export async function ownerTx(params: {
 
   const account = await horizon.loadAccount(ownerPublicKey);
 
-  const ops = [] as number[];
   const opsCount = (withdrawUsdc > 0 ? 1 : 0) + (defiUsdc > 0 ? 1 : 0);
-  void ops;
   const builder = new TransactionBuilder(account, {
     fee: (Number(BASE_FEE) * opsCount).toString(),
     networkPassphrase: STELLAR_NETWORK_PASSPHRASE,
@@ -51,7 +56,7 @@ export async function ownerTx(params: {
     builder.addOperation(
       Operation.payment({
         destination: withdrawTo ?? ownerPublicKey,
-        asset: Asset.native(),
+        asset: USDC_ASSET,
         amount: withdrawUsdc.toFixed(7),
       }),
     );
@@ -61,7 +66,7 @@ export async function ownerTx(params: {
     builder.addOperation(
       Operation.payment({
         destination: BLEND_STUB,
-        asset: Asset.native(),
+        asset: USDC_ASSET,
         amount: defiUsdc.toFixed(7),
       }),
     );
