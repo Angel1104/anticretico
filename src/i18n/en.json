@@ -10,9 +10,9 @@
       "title": "How it works",
       "steps": [
         "An owner posts a property as anticrético.",
-        "Investors deposit USDC into a Trustless Work escrow.",
-        "Once the lien is registered, the escrow is released to the owner.",
-        "Monthly rent is distributed to token holders via Pollar."
+        "Investors deposit USDC into a controlled escrow (pilot: Trustless Work).",
+        "Once registered with Derechos Reales, the escrow is released to the owner.",
+        "Monthly rent is distributed to holders with batch payments on Stellar (pilot: Pollar)."
       ]
     },
     "featured": {

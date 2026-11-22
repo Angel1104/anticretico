@@ -10,9 +10,9 @@
       "title": "Cómo funciona",
       "steps": [
         "Un propietario pone su casa en anticrético.",
-        "Inversionistas aportan USDC a un escrow Trustless Work.",
+        "Inversionistas aportan USDC a un escrow controlado (piloto: Trustless Work).",
         "Al inscribirse en Derechos Reales, el escrow se libera al dueño.",
-        "La renta mensual se distribuye a los holders vía Pollar."
+        "La renta mensual se distribuye a los holders con pagos batch en Stellar (piloto: Pollar)."
       ]
     },
     "featured": {
