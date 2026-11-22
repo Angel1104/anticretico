@@ -97,7 +97,7 @@ export function Nav({ variant = "app" }: NavProps) {
   return (
     <nav className={styles.nav}>
       <Link href="/" className={styles.brand}>
-        Anticretico
+        <img src="/logo-wordmark.png" alt="Llavero" style={{ height: 32 }} />
       </Link>
       <div className={styles.links}>
         {variant === "app" && (

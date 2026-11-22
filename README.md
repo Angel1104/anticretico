@@ -1,6 +1,6 @@
-# Anticretico
+# Llavero
 
-Fractional Bolivian *anticrético* real estate investment on Stellar testnet. From 1,000 USDC. Yield is variable and legally backed by the inscription in Derechos Reales.
+Llavero permite que varias personas cofinancien un anticrético en Bolivia desde 100 USDC en Stellar, cobren renta mensual mientras el inmueble está alquilado y recuperen su capital al final del plazo.
 
 **Live demo:** https://anticretico.vercel.app
 **Pitch script:** [`../anticretico-docs/PITCH.md`](https://github.com/Angel1104/anticretico-docs/blob/main/PITCH.md)
@@ -9,7 +9,7 @@ Fractional Bolivian *anticrético* real estate investment on Stellar testnet. Fr
 ## Demo
 
 **Video (MP4, desktop + mobile):** https://github.com/Angel1104/anticretico-docs/raw/main/demo.mp4
-**GIF (short loop):** ![Anticretico demo](https://raw.githubusercontent.com/Angel1104/anticretico-docs/main/demo.gif)
+**GIF (short loop):** ![Llavero demo](https://raw.githubusercontent.com/Angel1104/anticretico-docs/main/demo.gif)
 
 End-to-end walkthrough: landing → catalog (6 properties with live state) → property detail → admin panel (3 tabs: validations, distributions, rollover) → investor dashboard → owner panel (slider for Retirar/DeFi) → locale switch ES→EN. The MP4 shows the same flow first in desktop (1280×720), then in mobile viewport (iPhone 15: 390×844 + touch).
 

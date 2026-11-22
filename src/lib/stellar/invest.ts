@@ -19,6 +19,8 @@ import { signXdr } from "./wallet";
 
 const horizon = new Horizon.Server(STELLAR_HORIZON_URL);
 
+export const MIN_INVESTMENT_USDC = 100;
+
 export type InvestResult = {
   hash: string;
   horizonUrl: string;
@@ -36,8 +38,8 @@ export async function investInProperty(params: {
 }): Promise<InvestResult> {
   const { investorPublicKey, amountUsdc, propertySlug } = params;
 
-  if (!Number.isInteger(amountUsdc) || amountUsdc < 1000) {
-    throw new Error("Monto mínimo: 1000 USDC");
+  if (!Number.isInteger(amountUsdc) || amountUsdc < MIN_INVESTMENT_USDC) {
+    throw new Error(`Monto mínimo: ${MIN_INVESTMENT_USDC} USDC`);
   }
 
   const account = await horizon.loadAccount(investorPublicKey);
