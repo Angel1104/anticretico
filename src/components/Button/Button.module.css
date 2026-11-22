@@ -12,7 +12,7 @@
 
 .btn:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(212, 167, 76, 0.4);
+  box-shadow: var(--shadow-focus-ring);
 }
 
 .btn:disabled {
@@ -43,7 +43,7 @@
 
 .v_primary {
   background: var(--color-gold);
-  color: var(--color-bg);
+  color: var(--color-bg-elevated);
 }
 
 .v_primary:hover:not(:disabled) {

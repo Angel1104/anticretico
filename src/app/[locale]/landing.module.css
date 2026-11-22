@@ -42,7 +42,7 @@
   display: inline-flex;
   align-items: center;
   background: var(--color-gold);
-  color: var(--color-bg);
+  color: var(--color-bg-elevated);
   border-radius: var(--radius-md);
   font-weight: var(--typography-font-weight-semibold);
   font-size: var(--typography-font-size-lg);
@@ -107,7 +107,7 @@
   height: 32px;
   border-radius: var(--radius-pill);
   background: var(--color-gold);
-  color: var(--color-bg);
+  color: var(--color-bg-elevated);
   display: inline-flex;
   align-items: center;
   justify-content: center;

@@ -1,8 +1,8 @@
 {
   "landing": {
     "hero": {
-      "title": "Invest in Bolivian anticrético from 1,000 USDC.",
-      "subtitle": "Variable yield. Protected by the public registry (Derechos Reales). On-chain on Stellar.",
+      "title": "Invest in Bolivian anticrético from 100 USDC.",
+      "subtitle": "Llavero enables multiple people to co-finance an anticrético in Bolivia from 100 USDC on Stellar, collect monthly rent while the property is leased, and recover their capital at the end of the term.",
       "ctaPrimary": "Browse properties",
       "ctaSecondary": "I'm a property owner"
     },
@@ -87,7 +87,7 @@
   "invest": {
     "invest": "Invest",
     "amount": "Amount",
-    "minHint": "Minimum 1,000 USDC",
+    "minHint": "Minimum 100 USDC",
     "continue": "Continue",
     "connecting": "Connecting wallet…",
     "connectingBody": "Approve the connection in your Freighter extension.",
@@ -107,7 +107,7 @@
     "backToCatalog": "← See all properties",
     "retry": "Retry",
     "errorTitle": "Investment not completed",
-    "errorMinAmount": "Minimum amount is 1,000 USDC.",
+    "errorMinAmount": "Minimum amount is 100 USDC.",
     "error": {
       "notInstalled": "Freighter is not installed. Install it from freighter.app and reload.",
       "wrongNetwork": "Freighter is not on testnet. Switch the network in the extension and retry.",
@@ -175,7 +175,7 @@
     "connectRequiredBody": "To see your properties connect Freighter from the top-right.",
     "loading": "Loading your properties…",
     "noProperties": "No properties",
-    "noPropertiesBody": "The connected wallet does not own any properties on Anticretico.",
+    "noPropertiesBody": "The connected wallet does not own any properties on Llavero.",
     "receivedTotal": "Capital received",
     "allocation": "Allocation (slider = withdraw %)",
     "withdraw": "Withdraw to your wallet",

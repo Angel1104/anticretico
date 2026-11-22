@@ -41,7 +41,7 @@
 
 .inputWrap:focus-within {
   border-color: var(--color-border-strong);
-  box-shadow: 0 0 0 3px rgba(212, 167, 76, 0.4);
+  box-shadow: var(--shadow-focus-ring);
 }
 
 .input {

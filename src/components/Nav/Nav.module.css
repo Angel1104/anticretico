@@ -10,11 +10,15 @@
 }
 
 .brand {
-  font-size: var(--typography-font-size-lg);
-  font-weight: var(--typography-font-weight-bold);
-  color: var(--color-gold);
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
   text-decoration: none;
-  letter-spacing: 0.02em;
+}
+
+.brand img {
+  display: block;
+  width: auto;
 }
 
 .links {
@@ -81,7 +85,7 @@
   height: 32px;
   padding: 0 var(--spacing-3);
   background: var(--color-gold);
-  color: var(--color-bg);
+  color: var(--color-bg-elevated);
   border: none;
   border-radius: var(--radius-md);
   font-size: var(--typography-font-size-sm);

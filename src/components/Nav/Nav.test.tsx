@@ -44,6 +44,15 @@ describe("Nav", () => {
     );
   });
 
+  it("renders the Llavero wordmark", () => {
+    render(<Nav variant="public" />);
+
+    expect(screen.getByRole("img", { name: "Llavero" })).toHaveAttribute(
+      "src",
+      "/logo-wordmark.png",
+    );
+  });
+
   it("switches from the default Spanish path to the same English page", () => {
     render(<Nav variant="app" />);
 

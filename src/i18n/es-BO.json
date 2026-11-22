@@ -1,8 +1,8 @@
 {
   "landing": {
     "hero": {
-      "title": "Invierte en anticréticos bolivianos desde 1.000 USDC.",
-      "subtitle": "Rendimiento variable. Protegido por Derechos Reales. On-chain en Stellar.",
+      "title": "Invierte en anticréticos bolivianos desde 100 USDC.",
+      "subtitle": "Varios inversionistas cofinancian un anticrético en Bolivia desde 100 USDC. Renta mensual mientras el inmueble está alquilado; capital devuelto al final del plazo. On-chain en Stellar.",
       "ctaPrimary": "Ver propiedades",
       "ctaSecondary": "Soy propietario"
     },
@@ -87,7 +87,7 @@
   "invest": {
     "invest": "Invertir",
     "amount": "Monto",
-    "minHint": "Mínimo 1.000 USDC",
+    "minHint": "Mínimo 100 USDC",
     "continue": "Continuar",
     "connecting": "Conectando wallet…",
     "connectingBody": "Autoriza la conexión en tu extensión Freighter.",
@@ -107,7 +107,7 @@
     "backToCatalog": "← Ver todas las propiedades",
     "retry": "Reintentar",
     "errorTitle": "Inversión no completada",
-    "errorMinAmount": "El monto mínimo es 1.000 USDC.",
+    "errorMinAmount": "El monto mínimo es 100 USDC.",
     "error": {
       "notInstalled": "Freighter no está instalado. Instálalo desde freighter.app y recarga.",
       "wrongNetwork": "Freighter no está en testnet. Cambia la red en la extensión y reintenta.",
@@ -175,7 +175,7 @@
     "connectRequiredBody": "Para ver tus propiedades conectá Freighter desde el botón arriba a la derecha.",
     "loading": "Cargando tus propiedades…",
     "noProperties": "Sin propiedades",
-    "noPropertiesBody": "La wallet conectada no es dueña de ninguna propiedad en Anticretico.",
+    "noPropertiesBody": "La wallet conectada no es dueña de ninguna propiedad en Llavero.",
     "receivedTotal": "Capital recibido",
     "allocation": "Distribución (slider = % a retirar)",
     "withdraw": "Retirar a tu wallet",

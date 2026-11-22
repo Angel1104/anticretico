@@ -2,22 +2,22 @@
  * Do not edit by hand. Run `npm run sync:tokens` to regenerate. */
 
 :root {
-  --color-bg: #0A1628;
-  --color-bg-elevated: #13203A;
-  --color-bg-elevated-2: #1B2B4A;
-  --color-border: #223355;
-  --color-border-strong: #3B5080;
-  --color-text-primary: #F5F1E6;
-  --color-text-secondary: #A8B3C7;
-  --color-text-muted: #6E7A91;
-  --color-gold: #D4A74C;
-  --color-gold-hover: #E3BA5F;
-  --color-gold-muted: #8A6E31;
-  --color-state-success: #1E9E6A;
-  --color-state-warning: #D4A74C;
-  --color-state-info: #4A8FD4;
-  --color-state-danger: #D94A4A;
-  --color-overlay: rgba(5, 11, 22, 0.72);
+  --color-bg: #F4F5F7;
+  --color-bg-elevated: #FFFFFF;
+  --color-bg-elevated-2: #EFEEF5;
+  --color-border: #E3E5EC;
+  --color-border-strong: #C6CBDA;
+  --color-text-primary: #1F2347;
+  --color-text-secondary: #5C6183;
+  --color-text-muted: #8F94AF;
+  --color-gold: #D5486C;
+  --color-gold-hover: #BE3B5D;
+  --color-gold-muted: #8B2E47;
+  --color-state-success: #1F9E6A;
+  --color-state-warning: #E9B749;
+  --color-state-info: #B6AED6;
+  --color-state-danger: #D13A3A;
+  --color-overlay: rgba(31, 35, 71, 0.55);
   --typography-font-family-sans: Inter, system-ui, -apple-system, sans-serif;
   --typography-font-family-mono: ui-monospace, 'SF Mono', Menlo, monospace;
   --typography-font-size-xs: 12px;
@@ -49,9 +49,9 @@
   --radius-md: 10px;
   --radius-lg: 16px;
   --radius-pill: 9999px;
-  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
-  --shadow-modal: 0 10px 40px rgba(0, 0, 0, 0.5);
-  --shadow-focus-ring: 0 0 0 3px rgba(212, 167, 76, 0.4);
+  --shadow-card: 0 1px 2px rgba(31, 35, 71, 0.06), 0 4px 12px rgba(31, 35, 71, 0.08);
+  --shadow-modal: 0 10px 40px rgba(31, 35, 71, 0.18);
+  --shadow-focus-ring: 0 0 0 3px rgba(213, 72, 108, 0.35);
   --motion-duration-fast: 120ms;
   --motion-duration-base: 200ms;
   --motion-duration-slow: 400ms;

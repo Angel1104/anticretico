@@ -7,7 +7,10 @@ import styles from "./InvestFlow.module.css";
 import { useTranslations } from "next-intl";
 import { RiskDisclosure, ExplorerLink, Button } from "@/components";
 import { connectWallet } from "@/lib/stellar/wallet";
-import { investInProperty } from "@/lib/stellar/invest";
+import {
+  investInProperty,
+  MIN_INVESTMENT_USDC,
+} from "@/lib/stellar/invest";
 import { recordPosition } from "@/lib/db/positions";
 
 type Step =
@@ -28,11 +31,13 @@ export function InvestFlow({ propertyId, propertySlug, canInvest }: InvestFlowPr
   const t = useTranslations("invest");
   const router = useRouter();
   const [step, setStep] = useState<Step>({ kind: "amount" });
-  const [amountInput, setAmountInput] = useState("1000");
+  const [amountInput, setAmountInput] = useState(
+    String(MIN_INVESTMENT_USDC),
+  );
 
   async function handleContinue() {
     const amount = Number.parseInt(amountInput, 10);
-    if (!Number.isFinite(amount) || amount < 1000) {
+    if (!Number.isFinite(amount) || amount < MIN_INVESTMENT_USDC) {
       setStep({ kind: "error", message: t("errorMinAmount") });
       return;
     }
@@ -111,7 +116,7 @@ export function InvestFlow({ propertyId, propertySlug, canInvest }: InvestFlowPr
           <div className={styles.inputWrap}>
             <input
               type="number"
-              min={1000}
+              min={MIN_INVESTMENT_USDC}
               step={100}
               value={amountInput}
               onChange={(e) => setAmountInput(e.target.value)}

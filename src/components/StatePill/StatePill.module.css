@@ -19,26 +19,62 @@
 }
 
 .fondeo {
-  color: var(--color-state-info);
-  background: color-mix(in srgb, var(--color-state-info) 15%, transparent);
+  color: color-mix(
+    in srgb,
+    var(--color-state-info) 55%,
+    var(--color-text-primary)
+  );
+  background: color-mix(
+    in srgb,
+    var(--color-state-info) 30%,
+    var(--color-bg-elevated)
+  );
 }
 
 .tramite {
   color: var(--color-gold);
-  background: color-mix(in srgb, var(--color-gold) 15%, transparent);
+  background: color-mix(
+    in srgb,
+    var(--color-gold) 20%,
+    var(--color-bg-elevated)
+  );
 }
 
 .buscando {
-  color: var(--color-state-info);
-  background: color-mix(in srgb, var(--color-state-info) 15%, transparent);
+  color: color-mix(
+    in srgb,
+    var(--color-state-info) 55%,
+    var(--color-text-primary)
+  );
+  background: color-mix(
+    in srgb,
+    var(--color-state-info) 30%,
+    var(--color-bg-elevated)
+  );
 }
 
 .alquilado {
-  color: var(--color-state-success);
-  background: color-mix(in srgb, var(--color-state-success) 15%, transparent);
+  color: color-mix(
+    in srgb,
+    var(--color-state-success) 80%,
+    var(--color-text-primary)
+  );
+  background: color-mix(
+    in srgb,
+    var(--color-state-success) 20%,
+    var(--color-bg-elevated)
+  );
 }
 
 .finalizado {
-  color: var(--color-text-muted);
-  background: color-mix(in srgb, var(--color-text-muted) 15%, transparent);
+  color: color-mix(
+    in srgb,
+    var(--color-text-muted) 65%,
+    var(--color-text-primary)
+  );
+  background: color-mix(
+    in srgb,
+    var(--color-text-muted) 20%,
+    var(--color-bg-elevated)
+  );
 }

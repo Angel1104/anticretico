@@ -4,14 +4,14 @@
   background: var(--color-bg-elevated);
   border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-card);
   text-decoration: none;
   color: inherit;
   transition: box-shadow 200ms ease, transform 200ms ease;
 }
 
 .card:hover {
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-modal);
   transform: translateY(-2px);
 }
 
