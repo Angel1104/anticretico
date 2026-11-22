@@ -8,9 +8,10 @@ Fractional Bolivian *anticrético* real estate investment on Stellar testnet. Fr
 
 ## Demo
 
-![Anticretico demo](https://raw.githubusercontent.com/Angel1104/anticretico-docs/main/demo.gif)
+**Video (MP4, desktop + mobile):** https://github.com/Angel1104/anticretico-docs/raw/main/demo.mp4
+**GIF (short loop):** ![Anticretico demo](https://raw.githubusercontent.com/Angel1104/anticretico-docs/main/demo.gif)
 
-End-to-end walkthrough: landing → catalog (6 properties with live state) → property detail → admin panel (3 tabs: validations, distributions, rollover) → investor dashboard → owner panel (slider for Retirar/DeFi) → locale switch ES→EN.
+End-to-end walkthrough: landing → catalog (6 properties with live state) → property detail → admin panel (3 tabs: validations, distributions, rollover) → investor dashboard → owner panel (slider for Retirar/DeFi) → locale switch ES→EN. The MP4 shows the same flow first in desktop (1280×720), then in mobile viewport (iPhone 15: 390×844 + touch).
 
 ## Stack
 
