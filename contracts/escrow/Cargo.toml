@@ -9,18 +9,10 @@ resolver = "2"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-soroban-sdk = "=21.7.7"
+soroban-sdk = "=29.0.1"
 
 [dev-dependencies]
-soroban-sdk = { version = "=21.7.7", features = ["testutils"] }
-
-# Pin cap: soroban-env-host 21.2.1 declares `ed25519-dalek = ">=2.0.0"` with
-# no upper bound. After the ed25519-dalek v3.0 release the resolver picks v3,
-# whose rand_core API change breaks the host's own `SigningKey::generate`
-# call in `cfg(testutils)`. Patch forces the single-v2 resolution so the host
-# compiles unmodified.
-[patch.crates-io]
-ed25519-dalek = { git = "https://github.com/dalek-cryptography/curve25519-dalek", tag = "ed25519-2.1.1" }
+soroban-sdk = { version = "=29.0.1", features = ["testutils"] }
 
 [profile.release]
 opt-level = "z"
