@@ -112,6 +112,8 @@
       "notInstalled": "Freighter no está instalado. Instálalo desde freighter.app y recarga.",
       "wrongNetwork": "Freighter no está en testnet. Cambia la red en la extensión y reintenta.",
       "userRejected": "Rechazaste la conexión. Reintenta cuando quieras.",
+      "noUsdcBalance": "No tienes USDC en tu wallet. Pide USDC al treasury o abre un trustline.",
+      "noTrustline": "Tu wallet necesita un trustline a USDC. Lo añadimos a la transacción.",
       "unknown": "Error desconocido. Reintenta en unos segundos."
     }
   },
@@ -152,7 +154,10 @@
     "distributeConfirmBody": "Escribí DISTRIBUIR para confirmar. La distribución es irreversible — los USDC se envían a todos los holders en una sola transacción.",
     "distributedBody": "Distribuidos {amount} USDC a {count} holders.",
     "noneToDistribute": "No hay propiedades con rentas activas por distribuir.",
-    "rolloverTab": "Rollover"
+    "rolloverTab": "Rollover",
+    "error": {
+      "ownerNoTrustline": "El wallet del dueño no tiene trustline USDC. Pídele abrir uno antes de liberar."
+    }
   },
   "rollover": {
     "sources": "Propiedad origen (Finalizadas)",
