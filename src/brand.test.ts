@@ -20,6 +20,7 @@ describe("Llavero brand", () => {
     expect(es.owner.noPropertiesBody).toContain("Llavero");
 
     expect(en.landing.hero.title).toContain("100 USDC");
+    expect(en.landing.hero.subtitle).toBe(PRODUCT_DESCRIPTION_EN);
     expect(en.invest.minHint).toBe("Minimum 100 USDC");
     expect(en.invest.errorMinAmount).toBe("Minimum amount is 100 USDC.");
     expect(en.owner.noPropertiesBody).toContain("Llavero");
