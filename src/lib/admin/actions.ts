@@ -1,13 +1,21 @@
 "use server";
 
 import { createClient } from "@supabase/supabase-js";
-import { serverPayment } from "@/lib/stellar/server";
+import { remoteHasTrustline, serverPayment } from "@/lib/stellar/server";
+import { IS_USDC_CONFIGURED } from "@/lib/stellar/network";
 
 function supabaseAdmin() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!url || !key) throw new Error("Supabase env missing");
   return createClient(url, key, { auth: { persistSession: false } });
+}
+
+export class OwnerNoTrustlineError extends Error {
+  constructor(public ownerWallet: string) {
+    super("admin.error.ownerNoTrustline");
+    this.name = "OwnerNoTrustlineError";
+  }
 }
 
 export async function releaseEscrow(params: {
@@ -53,6 +61,16 @@ export async function releaseEscrow(params: {
   );
   if (totalFunded <= 0) {
     throw new Error("No funds to release.");
+  }
+
+  // Owner must have a USDC trustline before we can release. Without it the
+  // payment would op_no_trust at submission; failing early lets the admin UI
+  // show a clear message and the owner open the trustline.
+  if (IS_USDC_CONFIGURED) {
+    const ok = await remoteHasTrustline(property.owner_wallet);
+    if (!ok) {
+      throw new OwnerNoTrustlineError(property.owner_wallet);
+    }
   }
 
   // Fire the on-chain release.

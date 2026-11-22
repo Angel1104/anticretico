@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@supabase/supabase-js";
+import { Asset } from "@stellar/stellar-sdk";
 import { serverPayment } from "@/lib/stellar/server";
 
 function supabaseAdmin() {
@@ -97,12 +98,14 @@ export async function rolloverHolders(params: {
   // Anchor tx on-chain: escrow sends 1 stroop (0.0000001 XLM) to the target
   // escrow with a memo identifying the rollover. This is the canonical on-chain
   // marker; the actual bookkeeping is in Supabase. Real-world will replace this
-  // with a Soroban rollover contract call.
+  // with a Soroban rollover contract call. Native XLM intentionally: neither
+  // account needs a USDC trustline for the marker to settle.
   const res = await serverPayment({
     fromSecret: escrowSecret,
     toPublic: target.escrow_address,
     amountUsdc: 0.0000001,
     memo: `rol:${source.slug.slice(0, 20)}`,
+    asset: Asset.native(),
   });
 
   // Insert mirror positions on the target

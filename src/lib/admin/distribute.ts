@@ -1,7 +1,8 @@
 "use server";
 
 import { createClient } from "@supabase/supabase-js";
-import { serverBatchPayment } from "@/lib/stellar/server";
+import { remoteHasTrustline, serverBatchPayment } from "@/lib/stellar/server";
+import { IS_USDC_CONFIGURED } from "@/lib/stellar/network";
 
 function supabaseAdmin() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -15,7 +16,13 @@ const PLATFORM_FEE_BPS = 1500; // 15.00%
 export async function distributeMonthlyRent(params: {
   propertyId: string;
   adminWallet: string;
-}): Promise<{ hash: string; grossUsdc: number; netUsdc: number; holdersCount: number }> {
+}): Promise<{
+  hash: string;
+  grossUsdc: number;
+  netUsdc: number;
+  holdersCount: number;
+  skippedHolders: string[];
+}> {
   const { propertyId, adminWallet } = params;
 
   const allowList = (process.env.NEXT_PUBLIC_ADMIN_WALLETS ?? "")
@@ -62,7 +69,6 @@ export async function distributeMonthlyRent(params: {
   // Allocate by pro-rata. Use smallest unit = 1 USDC for simplicity (whole amounts).
   // Any rounding remainder stays with the distributor (platform retained).
   const perHolder = new Map<string, number>();
-  let allocated = 0;
   for (const p of positions) {
     if (perHolder.has(p.investor_wallet)) {
       perHolder.set(
@@ -74,8 +80,29 @@ export async function distributeMonthlyRent(params: {
     }
   }
 
+  // Filter out holders without a USDC trustline: we can't pay them, but the
+  // rest of the distribution proceeds. Skipped wallets are returned to the
+  // caller so the admin UI can tell them which investors need to open one.
+  const skippedHolders: string[] = [];
+  const payableWallets = new Map<string, number>();
+  if (IS_USDC_CONFIGURED) {
+    for (const [wallet, tokens] of perHolder) {
+      const ok = await remoteHasTrustline(wallet).catch(() => false);
+      if (ok) {
+        payableWallets.set(wallet, tokens);
+      } else {
+        skippedHolders.push(wallet);
+      }
+    }
+  } else {
+    for (const [wallet, tokens] of perHolder) {
+      payableWallets.set(wallet, tokens);
+    }
+  }
+
   const payouts: Array<{ toPublic: string; amountUsdc: number }> = [];
-  for (const [wallet, tokens] of perHolder) {
+  let allocated = 0;
+  for (const [wallet, tokens] of payableWallets) {
     const share = Math.floor((netUsdc * tokens) / totalInvested);
     if (share > 0) {
       payouts.push({ toPublic: wallet, amountUsdc: share });
@@ -122,5 +149,6 @@ export async function distributeMonthlyRent(params: {
     grossUsdc,
     netUsdc: allocated,
     holdersCount: payouts.length,
+    skippedHolders,
   };
 }
